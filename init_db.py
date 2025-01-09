@@ -50,5 +50,12 @@ def init_db():
         
         db.session.commit()
 
+def init_db():
+    with app.app_context():
+        db.create_all()
+       
+        if not Project.query.first():
+            add_sample_projects()
+
 if __name__ == '__main__':
     init_db()    print("Database initialized successfully!")
