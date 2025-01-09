@@ -74,11 +74,9 @@
 
 ## Author
 
-- Name: Jiapeng Shi
-- Student ID: 2110090402
+- Name: Junpan Shi
+- Student ID: 23122328
 - Course: Web Development
-- University: SDUST
-
-## License
-
-This project is licensed under the MIT License.
+- University: Cardiff university
+Firstly python init_db.py
+Secondly python app.py
