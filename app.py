@@ -26,30 +26,40 @@ def load_user(user_id):
 with app.app_context():
     db.create_all()
     if not Project.query.first():  
+
         projects = [
             Project(
-                title='Dynamic Website',
-                description='A personal portfolio website built with Flask and SQLAlchemy. Features include project showcasing, user authentication, and a comment system.',
-                image_url='project1.jpg',
-                github_url='https://github.com/sakuraandkiki/dynamic-web',
+                title='Personal Works Website',
+                description='A modern portfolio website built with Flask and SQLAlchemy. Features include project showcasing, user authentication, and a comment system.',
+                image_url='static/images/projects/1.jpg',
+                documentation_url='static/docs/project1.pdf',
+                video_url='static/videos/1.mp4',
+                github_url='https://gitlab.com/web4383802/web.git',
                 category='Web Development',
-                technologies='Python, Flask, SQLAlchemy, Bootstrap'
+                technologies='Python,Flask,HTML,CSS,JavaScript',
+                created_at=datetime.utcnow()
             ),
             Project(
-                title='E-commerce Platform',
-                description='An online shopping platform with product management, shopping cart, and payment integration.',
-                image_url='project2.jpg',
-                github_url='https://github.com/yourusername/ecommerce',
-                category='Web Application',
-                technologies='Python, Django, React, PostgreSQL'
+                title='Quiz System',
+                description='An interactive quiz system developed using Python. Includes features for both students and teachers, with real-time scoring and progress tracking.',
+                image_url='static/images/projects/2.jpg',
+                documentation_url='static/docs/project2.pdf',
+                video_url='static/videos/2.mp4',
+                github_url='https://gitlab.com/web4383802/quiz.git',
+                category='Desktop Application',
+                technologies='Python,Tkinter,SQLite,Pandas',
+                created_at=datetime.utcnow()
             ),
             Project(
-                title='Task Management System',
-                description='A collaborative task management system with real-time updates and team features.',
-                image_url='project3.jpg',
-                github_url='https://github.com/yourusername/taskmanager',
-                category='Web Application',
-                technologies='Python, Flask, Socket.IO, MongoDB'
+                title='iPhone Application Design',
+                description='A simple personal website based on HTML and CSS',
+                image_url='static/images/projects/3.jpg',
+                documentation_url='static/docs/project3.pdf',
+                video_url='static/videos/3.mp4',
+                github_url='https://gitlab.com/web4383802/app-design.git',
+                category='UI/UX Design',
+                technologies='Figma,UI Design,UX Design',
+                created_at=datetime.utcnow()
             )
         ]
         for project in projects:
