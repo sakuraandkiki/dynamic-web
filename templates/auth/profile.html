@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="profile-section">
+    <div class="container">
+        <!-- 用户信息卡片 -->
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h1 class="gradient-text">{{ user.username }}</h1>
+                <p class="profile-email">{{ user.email }}</p>
+                <p class="profile-date">
+                    Member since {{ user.created_at.strftime('%Y-%m-%d') }}
+                </p>
+            </div>
+            
+            <!-- 用户统计 -->
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <span class="stat-value">{{ comments|length }}</span>
+                    <span class="stat-label">Comments</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 用户评论历史 -->
+        <div class="profile-comments">
+            <h2>My Comments</h2>
+            {% if comments_with_projects %}
+                <div class="comments-list">
+                    {% for item in comments_with_projects %}
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <a href="{{ url_for('main.show_project', project_id=item.project.id) }}" 
+                               class="project-link">
+                                {{ item.project.title }}
+                            </a>
+                            <span class="comment-date">
+                                {{ item.comment.created_at.strftime('%Y-%m-%d %H:%M') }}
+                            </span>
+                        </div>
+                        <div class="comment-content">
+                            {{ item.comment.content }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="no-comments">
+                    <i class="fas fa-comments"></i>
+                    <p>You haven't made any comments yet.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

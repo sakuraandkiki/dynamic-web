@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="project-detail-section">
+    <div class="container">
+        <div class="project-detail-content">
+            <!-- 项目标题和介绍 -->
+            <div class="project-header">
+                <h1 class="gradient-text">{{ project.title }}</h1>
+                <div class="project-meta">
+                    <span class="project-category">
+                        <i class="fas fa-tag"></i>
+                        {{ project.category }}
+                    </span>
+                    <span class="project-date">
+                        <i class="fas fa-calendar"></i>
+                        {{ project.created_at.strftime('%Y-%m-%d') }}
+                    </span>
+                </div>
+            </div>
+
+            <!-- 项目描述 -->
+            <div class="project-description">
+                <h2>Project Description</h2>
+                <p>{{ project.description }}</p>
+                <div class="tech-tags">
+                    {% for tech in project.technologies.split(',') %}
+                    <span class="tech-tag">{{ tech.strip() }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- 项目视频 -->
+            <div class="project-video">
+                <h2>Project Demo</h2>
+                <video controls class="video-player">
+                    <source src="{{ url_for('static', filename='videos/' ~ project.id ~ '.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- 项目文档下载 -->
+            <div class="project-downloads">
+                <h2>Project Documentation</h2>
+                <div class="download-links">
+                    {% if project.documentation_url %}
+                    <a href="{{ url_for('main.download_file', project_id=project.id) }}" 
+                       class="btn btn-primary">
+                        <i class="fas fa-file-download"></i>
+                        Download Documentation
+                    </a>
+                    {% endif %}
+                    {% if project.github_url %}
+                    <a href="{{ project.github_url }}" class="btn btn-outline" target="_blank">
+                        <i class="fab fa-github"></i>
+                        View on GitHub
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- 评论部分 -->
+            <div class="project-comments">
+                <h2>Comments</h2>
+                
+                {% if current_user.is_authenticated %}
+                <!-- 评论表单 -->
+                <form id="comment-form" data-project-id="{{ project.id }}" class="comment-form">
+                    {{ form.csrf_token }}
+                    <div class="form-group">
+                        {{ form.content.label }}
+                        {{ form.content(class="form-input", rows="4") }}
+                        <span class="error-message" id="content-error"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Comment
+                    </button>
+                </form>
+                {% else %}
+                <div class="login-prompt">
+                    <p>Please <a href="{{ url_for('auth.login') }}">login</a> to leave a comment.</p>
+                </div>
+                {% endif %}
+
+                <!-- 评论列表 -->
+                <div class="comments-list">
+                    {% for comment in project.comments %}
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">{{ comment.author }}</span>
+                            <span class="comment-date">{{ comment.created_at.strftime('%Y-%m-%d %H:%M') }}</span>
+                        </div>
+                        <div class="comment-content">
+                            {{ comment.content }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

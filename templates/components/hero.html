@@ -1,0 +1,9 @@
+{% macro hero() %}
+<div class="container hero-content">
+    <div class="hero-text">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Exploring the intersection of design and technology</p>
+    </div>
+    <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Profile Image">
+</div>
+{% endmacro %}

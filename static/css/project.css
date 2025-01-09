@@ -1,0 +1,235 @@
+/* 重置基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Project page specific styles */
+.project-detail {
+    padding-top: 150px;
+    min-height: 100vh;
+    background: var(--apple-gray);
+    position: relative;
+    width: 100%;
+}
+
+.project-header {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.project-header h1 {
+    font-size: 48px;
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: -0.003em;
+    background: var(--apple-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 20px;
+    display: block;
+}
+
+/* 容器样式 */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+/* 视频部分 */
+.project-video {
+    margin: 40px 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-video:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+/* 内容部分 */
+.project-content {
+    display: grid;
+    gap: 40px;
+    margin: 60px 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* 项目描述 */
+.project-description {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+}
+
+.project-description h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    background: var(--apple-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+}
+
+.project-description p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--apple-text);
+    margin-bottom: 20px;
+}
+
+/* 文件列表样式 */
+.project-files {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.project-files h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    background: var(--apple-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+}
+
+.files-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.file-item {
+    width: 100%;
+}
+
+.download-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 18px 24px;
+    background: var(--apple-gray);
+    border-radius: 14px;
+    border: 1px solid transparent;
+    color: var(--apple-dark);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.download-button:hover {
+    background: #fff;
+    border-color: var(--apple-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,102,204,0.12);
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.file-icon {
+    font-size: 22px;
+    color: var(--apple-blue);
+}
+
+.file-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--apple-dark);
+}
+
+.download-icon {
+    font-size: 20px;
+    color: var(--apple-blue);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.download-button:hover .download-icon {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* 添加活跃状态效果 */
+.download-button:active {
+    transform: translateY(0);
+    background: #f0f0f0;
+}
+
+/* 动画效果 */
+.slide-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .project-detail {
+        padding-top: 120px;
+    }
+    
+    .project-header h1 {
+        font-size: 36px;
+    }
+    
+    .project-description h2,
+    .project-files h2 {
+        font-size: 24px;
+    }
+    
+    .project-description p {
+        font-size: 16px;
+    }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+    .project-description,
+    .project-files {
+        background: #2d2d2f;
+    }
+    
+    .project-description p {
+        color: #a1a1a6;
+    }
+    
+    .download-button {
+        background: rgba(255,255,255,0.1);
+    }
+    
+    .download-button:hover {
+        background: rgba(255,255,255,0.15);
+    }
+    
+    .file-name {
+        color: #f5f5f7;
+    }
+}

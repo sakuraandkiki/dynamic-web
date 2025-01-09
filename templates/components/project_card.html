@@ -1,0 +1,11 @@
+{% macro project_card(project) %}
+<div class="project-card">
+    <div class="project-card-content">
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.description[:150] }}...</p>
+        <a href="{{ url_for('projects.project', project_id=project.id) }}" class="view-project">
+            View Project <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+{% endmacro %}
