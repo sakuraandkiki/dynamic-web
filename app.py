@@ -1,6 +1,6 @@
 
 import os
-from datetime import datetime, UTC
+
 from flask import Flask
 from flask_login import LoginManager
 from extensions import db
@@ -38,7 +38,7 @@ with app.app_context():
                 github_url='https://gitlab.com/web4383802/web.git',
                 category='Web Development',
                 technologies='Python,Flask,HTML,CSS,JavaScript',
-                created_at=datetime.utcnow()
+                
             ),
             Project(
                 title='Quiz System',
@@ -49,7 +49,7 @@ with app.app_context():
                 github_url='https://gitlab.com/web4383802/quiz.git',
                 category='Desktop Application',
                 technologies='Python,Tkinter,SQLite,Pandas',
-                created_at=datetime.utcnow()
+             
             ),
             Project(
                 title='iPhone Application Design',
@@ -60,7 +60,7 @@ with app.app_context():
                 github_url='https://gitlab.com/web4383802/app-design.git',
                 category='UI/UX Design',
                 technologies='Figma,UI Design,UX Design',
-                created_at=datetime.utcnow()
+              
             )
         ]
         for project in projects:
